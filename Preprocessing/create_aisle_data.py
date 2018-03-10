@@ -76,3 +76,39 @@ if __name__ == '__main__':
 
             days_since_prior_order_histories.append(row['days_since_prior_orders'])
             order_number_histories.append(row['order_numbers'])
+			
+	data = [
+        user_ids,
+        aisle_ids,
+        department_ids,
+        eval_sets,
+
+        is_ordered_histories,
+        index_in_order_histories,
+        order_size_histories,
+        order_dow_histories,
+        order_hour_histories,
+        days_since_prior_order_histories,
+        order_number_histories,
+        num_products_from_aisle_histories,
+    ]
+    columns = [
+        'user_id',
+        'aisle_id',
+        'department_id',
+        'eval_set',
+
+        'is_ordered_history',
+        'index_in_order_history',
+        'order_size_history',
+        'order_dow_history',
+        'order_hour_history',
+        'days_since_prior_order_history',
+        'order_number_history',
+        'num_products_from_aisle_history',
+    ]
+    if not os.path.isdir('../data/processed'):
+        os.makedirs('../data/processed')
+
+    df = pd.DataFrame(dict(zip(columns, data)))
+    df.to_csv('../data/processed/aisle_data.csv', index=False)
