@@ -101,3 +101,8 @@ if __name__ == '__main__':
         'order_number_history',
         'num_products_from_department_history',
     ]
+	if not os.path.isdir('../data/processed'):
+        os.makedirs('../data/processed')
+
+    df = pd.DataFrame(dict(zip(columns, data)))
+    df.to_csv('../data/processed/department_data.csv', index=False)
